@@ -21,3 +21,5 @@ jobs:
     secrets:
       aws-key-id: ${{ secrets.AWS_KEY_ID }}
       aws-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+    with:
+      version: "8.2"
