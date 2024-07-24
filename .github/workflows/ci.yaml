@@ -38,6 +38,10 @@ jobs:
           key: ${{ github.sha }}-next-dependencies
           path: ./node_modules
 
+      - name: Install dependencies
+        run: |
+          npm install
+
       - name: Unit Testing
         run: |
           npm test
