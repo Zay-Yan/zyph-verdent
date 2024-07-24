@@ -9,13 +9,24 @@ on:
 
 jobs:
   build:
-    name: "Build"
-    uses: ./.github/workflows/build.yaml
-    with:
-      version: "8.2"
+    name: Build Next App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Cache the Vendor
+        uses: actions/cache@v4.0.2
+        with:
+          key: ${{ github.sha }}-next-dependencies
+          path: ./node_modules
 
   test:
-    name: Build Next App
+    name: Test Next App
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
