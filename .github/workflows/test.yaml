@@ -26,12 +26,18 @@ jobs:
           npm run build
 
       - name: Upload to S3
-        uses: shallwefootball/s3-upload-action@master
+        uses: Noelware/s3-action@2
         with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: './.next'
+          directories: |
+              ./.next
+
+          access-key-id: ${{ secrets.AWS_KEY_ID }}
+          secret-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          endpoint: s3.amazonaws.com
+          region: us-east-1
+          bucket: ${{ secrets.AWS_BUCKET }}
+
+  
 
       
            
