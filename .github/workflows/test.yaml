@@ -26,7 +26,7 @@ jobs:
           npm run build
 
       - name: Upload to S3
-        uses: Noelware/s3-action@2
+        uses: Noelware/s3-action@v2.2.6
         with:
           directories: |
               ./.next
