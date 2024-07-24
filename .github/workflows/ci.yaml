@@ -47,10 +47,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-
+          
       - name: Unit Testing
         run: |
           npm test
+          npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
