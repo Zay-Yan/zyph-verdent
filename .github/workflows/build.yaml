@@ -15,9 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: NPM Setup
-        uses: actions/setup-node@v4
-
       - name: Install dependencies
         run: |
           npm install
@@ -26,7 +23,8 @@ jobs:
         uses: actions/cache@v4.0.2
         with:
           key: ${{ github.sha }}-next-dependencies
-          path: .node_modules
-
+          path: ./node_modules
+      
+      
     
 

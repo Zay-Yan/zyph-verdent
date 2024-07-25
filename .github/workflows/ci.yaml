@@ -1,0 +1,28 @@
+name: CI Workflow
+
+# trigger
+on:
+  pull_request:
+    branches:
+      - main
+      - features
+
+jobs:
+  build:
+    name: "Build"
+    uses: ./.github/workflows/build.yaml
+    with:
+      version: "8.2"
+
+  test:
+    name: "Test"
+    needs: [build]
+    uses: ./.github/workflows/test.yaml
+    secrets:
+      AWS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+    with:
+      version: "8.2"
+
+  
+    
